@@ -30,3 +30,73 @@
 # puts "#{var1} #{var2}"
 
 # ------------------------------------
+# 【クロニクルコラボ問題】文章サイズ変更
+# 3 4 7
+# wdip
+# #dig
+# et#k
+
+# input = gets.split(' ').map(&:to_i)
+# count = input[0]
+# text = []
+
+# count.times do 
+#   str = gets.chomp
+#   text << str
+# end
+
+# sentence = text.join
+# puts sentence.scan(/.{1,#{input[2]}}/)
+
+# ------------------------------------
+# # 【完全数とほぼ完全数】
+# def divisor(num)
+#   divisors = []
+#   n = 1
+#   while n < num do
+#     if num % n == 0
+#       divisors << n
+#     end 
+#     n += 1
+#   end
+#   return divisors
+# end
+
+# count = gets.to_i
+
+# count.times do
+#   input = gets.to_i
+#   ans = divisor(input)
+#   if ans.sum == input
+#     puts "perfect"
+#   elsif input - ans.sum == 1
+#     puts "nearly"
+#   else
+#     puts "neither"
+#   end
+# end
+
+# ------------------------------------
+# 【テストの採点】
+
+# input = gets.split(' ').map(&:to_i)
+# student_number = [*1..input[0]]
+# passing_score = input[1]
+
+# student_number.each do |student|
+#   input = gets.split(' ').map(&:to_i)
+#   score = input[0]
+#   absense = input[1]
+#   grade = 
+#   if score - absense * 5 > 0
+#     score - absense * 5
+#   else score - absense * 5 <= 0
+#     0
+#   end
+
+#   if grade >= passing_score
+#     puts student
+#   end
+# end
+
+# ------------------------------------

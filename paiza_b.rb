@@ -37,7 +37,105 @@
 #     puts "#{input_line}s"
 #   end
 # end
+
 # ------------------------------------
+# 【最遅出社時刻】
+# 1 行目には 3 つの整数 a, b, c が入力されます。これらは通勤ルートの各ステップにかかる時間（単位は分）を表します。
+# 2 行目には配座駅から出る電車の本数を表す整数 N が入力されます。
+# 続く N 行は各電車の発車時刻を表しています。 すなわち、i = 1, 2, ..., N に対し、h_i 時 m_i 分に配座駅を発車する電車があることを表します。
+
+# 30 30 10
+# 3
+# 6 0
+# 7 0
+# 8 0
+
+# 25 30 30
+# 2
+# 7 20
+# 8 0
+
+# 10 10 10
+# 6
+# 8 5
+# 8 15
+# 8 25
+# 8 35
+# 8 45
+# 8 55
+
+# # 間に合う入力値を時刻に変換
+# def calc_time(hour, minute, time)
+#   if minute - time < 0
+#     minute = 60 + (minute - time)
+#     hour -= 1
+#   else
+#     minute -= time
+#   end
+#   puts format("%02d:%02d", hour, minute)
+# end
+
+# input = gets.split(' ').map(&:to_i)
+# count = gets.to_i
+# in_time = []
+# train_walk_time = input[1] + input[2]
+
+# # 9：00を超えない時間を選択して配列
+# count.times do
+#   schedule = gets.split(' ').map(&:to_i)
+#   if schedule[1] + train_walk_time < 60 || schedule[0] <= 7
+#     in_time << schedule
+#   end
+# end
+
+# # 配列の中から一番遅い時間を選択し、時刻計算
+# calc_time(in_time.last[0], in_time.last[1], input[0])
+
+# ------------------------------------
+# # 選挙の演説
+
+# input = gets.split(' ').map(&:to_i)
+# candidates = [*1..input[0]] # 立候補者
+# candidate_supporters = Array.new(candidates.length, 0) # 支持者
+# voters = input[1] # 有権者
+# count = input[2] # 演説回数
+
+
+# count.times do
+#   # スピーチがどの立候補者か
+#   speech = gets.to_i
+#   # 立候補者一人ずつ確認
+#   candidates.each.with_index do |candidate, index|
+#     # 立候補者とスピーチが一緒だったら
+#     if candidate == speech
+#       sum = 0
+#       candidate_supporters.each.with_index(1) do |supporter, index|
+#         if supporter > 0 && candidate != index
+#           sum += 1
+#         end
+#       end
+#       if voters > 0
+#         voters -= 1
+#         sum += 1
+#       end
+#       candidate_supporters[(speech - 1)] += sum
+#     end
+#   end
+#   # スピーチしてない立候補者の支持者をマイナス
+#   candidates.each do |candidate|
+#     if candidate_supporters[(candidate - 1)] > 0 && candidate != speech
+#       candidate_supporters[(candidate - 1)] -= 1
+#     end
+#   end
+# end
+
+# # 支持者の多い立候補者番号を算出
+# max = candidate_supporters.max
+# candidate_supporters.each.with_index do |suppoter, index|
+#   if suppoter == max
+#     puts candidates[index]
+#   end
+# end
 
 # スキルアップ【うなぎの席】
 # ーーーーーーーーーーーーーーーーーーーー
@@ -104,56 +202,3 @@
 
 # puts all_seat_count - store_seat.length
 # puts store_seat
-
-# ------------------------------------
-# 【最遅出社時刻】
-# 1 行目には 3 つの整数 a, b, c が入力されます。これらは通勤ルートの各ステップにかかる時間（単位は分）を表します。
-# 2 行目には配座駅から出る電車の本数を表す整数 N が入力されます。
-# 続く N 行は各電車の発車時刻を表しています。 すなわち、i = 1, 2, ..., N に対し、h_i 時 m_i 分に配座駅を発車する電車があることを表します。
-
-# 30 30 10
-# 3
-# 6 0
-# 7 0
-# 8 0
-
-# 25 30 30
-# 2
-# 7 20
-# 8 0
-
-# 10 10 10
-# 6
-# 8 5
-# 8 15
-# 8 25
-# 8 35
-# 8 45
-# 8 55
-
-# 間に合う入力値を時刻に変換
-def calc_time(hour, minute, time)
-  if minute - time < 0
-    minute = 60 + (minute - time)
-    hour -= 1
-  else
-    minute -= time
-  end
-  puts format("%02d:%02d", hour, minute)
-end
-
-input = gets.split(' ').map(&:to_i)
-count = gets.to_i
-in_time = []
-train_walk_time = input[1] + input[2]
-
-# 9：00を超えない時間を選択して配列
-count.times do
-  schedule = gets.split(' ').map(&:to_i)
-  if schedule[1] + train_walk_time < 60 || schedule[0] <= 7
-    in_time << schedule
-  end
-end
-
-# 配列の中から一番遅い時間を選択し、時刻計算
-calc_time(in_time.last[0], in_time.last[1], input[0])
