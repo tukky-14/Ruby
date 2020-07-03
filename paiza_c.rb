@@ -100,3 +100,29 @@
 # end
 
 # ------------------------------------
+# 【ボタンを押すゲーム】
+# game = gets.split(' ').map(&:to_i)
+# push_count = gets.to_i
+# inputs = gets.split(' ').map(&:to_i)
+
+# button = (1..game[0]).to_a
+# gameover_count = game[1]
+
+# good = 0
+# bad = 0
+# n = 0
+# inputs.each do |input|
+#   n = 0 if n == button.length
+#   if input == button[n]
+#     good += 1
+#   else
+#     bad += 1
+#   end
+#   n += 1
+# end
+
+# if bad < gameover_count
+#   puts good * 1000
+# else
+#   puts -1
+# end

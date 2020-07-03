@@ -202,3 +202,41 @@
 
 # puts all_seat_count - store_seat.length
 # puts store_seat
+
+# ------------------------------------
+# # 【表の自動生成】
+
+# # レコードを2つからrecord_count数まで増やすメソッド
+# def create_record(record, count)
+#   n = 1
+#   count.times do
+#     num = record[n] + (record[n] - record[n - 1])
+#     record << num
+#     n += 1
+#   end
+#   return record
+# end
+
+# input = gets.split(' ').map(&:to_i)
+# record_count = input[0] - 2
+# column_count = input[1] - 2
+# records = []
+
+# record1 = gets.split(' ').map(&:to_i)
+# records << create_record(record1, column_count)
+
+# record2 = gets.split(' ').map(&:to_i)
+# records << create_record(record2, column_count)
+
+# n = 0
+# record_count.times do
+#   record = []
+#   record << records[n + 1][0] + records[n + 1][0] - records[n][0]
+#   record << records[n + 1][1] + records[n + 1][1] - records[n][1]
+#   n += 1
+#   records << create_record(record, column_count)
+# end
+
+# records.each do |record|
+#   puts record.join(' ')
+# end
