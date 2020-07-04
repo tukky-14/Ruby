@@ -126,3 +126,36 @@
 # else
 #   puts -1
 # end
+
+# ------------------------------------
+# # 【カード並べ 】
+# numbers = gets.split(' ').sort
+
+# number1 = numbers[-1] + numbers[0]
+# number2 = numbers[-2] + numbers[1]
+
+# puts number1.to_i + number2.to_i
+
+# ------------------------------------
+def check_str(str, partial)
+  if str.include?(partial)
+    return str
+  end
+end
+
+count = gets.to_i
+partial = gets.chomp
+strs = []
+
+count.times do
+  str = gets.chomp
+  if check_str(str, partial)
+    strs <<  check_str(str, partial)
+  end
+end
+
+if strs.any?
+  puts strs
+else
+  puts "None"
+end

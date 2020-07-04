@@ -92,7 +92,7 @@
 # calc_time(in_time.last[0], in_time.last[1], input[0])
 
 # ------------------------------------
-# # 選挙の演説
+# # 【選挙の演説】
 
 # input = gets.split(' ').map(&:to_i)
 # candidates = [*1..input[0]] # 立候補者
@@ -240,3 +240,99 @@
 # records.each do |record|
 #   puts record.join(' ')
 # end
+
+# ------------------------------------
+# 【タクシー料金】
+# 2 700
+# 600 200 200 400
+# 900 800 400 500
+
+# 2 8000
+# 2000 730 280 90
+# 1052 410 237 80
+
+# # 各タクシーのデータをハッシュに格納メソッド
+# def taxi_data(data)
+#   taxi = {}
+#   taxi["初乗り距離"] = data[0]
+#   taxi["初乗り運賃"] = data[1]
+#   taxi["加算距離"] = data[2]
+#   taxi["加算運賃"] = data[3]
+#   return taxi
+# end
+
+# # 各タクシーの料金を計算するメソッド
+# def amount_calc(taxi, destination)
+#   if taxi["初乗り距離"] - destination > 0
+#     return taxi["初乗り運賃"]
+#   else
+#     amount = taxi["初乗り運賃"]
+#     destination -= taxi["初乗り距離"]
+#     while destination >= 0 
+#       destination -= taxi["加算距離"]
+#       amount += taxi["加算運賃"]
+#     end
+#     return amount
+#   end
+# end
+
+# input = gets.split(' ').map(&:to_i)
+# taxi_count = input[0]
+# amounts = []
+
+# taxi_count.times do
+#   destination = input[1]
+#   data = gets.split(' ').map(&:to_i)
+#   taxi = taxi_data(data)
+#   amount = amount_calc(taxi, destination)
+#   amounts << amount
+# end
+
+# # 費用配列の中から一番安い金額と高い金額を算出
+# puts "#{amounts.min} #{amounts.max}"
+
+# ------------------------------------
+# 【相性チェック】
+
+# # 英字を数字に変換メソッド
+# def change_number(str1)
+#   alfa = "abcdefghijklmnopqrstuvwxyz"
+#   numbers = []
+#   str1.each do |str|
+#     number = alfa.index(str) + 1
+#     numbers << number
+#   end
+#   return numbers
+# end
+
+# # 数字を1つにするメソッド
+# def one_number_calc(array)
+#   until array.length == 1 do
+#     new_array = []
+#     count = array.length - 1
+#     n = 0
+#     count.times do
+#       num = array[n] + array[n + 1]
+#       if num > 101
+#         new_array << num - 101
+#       else
+#         new_array << num
+#       end
+#       n += 1
+#     end
+#     array.clear
+#     array = new_array
+#   end
+#   return array[0]
+# end
+
+# input = gets.split(' ')
+# str1 = input[0].split('')
+# str2 = input[1].split('')
+# combination1 = change_number(str1 + str2)
+# combination2 = change_number(str2 + str1)
+
+# a = one_number_calc(combination1)
+# b = one_number_calc(combination2)
+
+# puts a > b ? a : b
