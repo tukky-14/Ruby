@@ -137,72 +137,6 @@
 #   end
 # end
 
-# スキルアップ【うなぎの席】
-# ーーーーーーーーーーーーーーーーーーーー
-# 6 3
-# 3 2
-# 1 6
-# 2 5
-
-# 入力1で配列を作成
-# 入力2times繰り返す
-# 入力1から連続した2の値を、
-# 配列に含まれている場合は配列から削除
-# 配列に含まれていない場合は何もしない
-
-# # 席数として入力された値を配列にするメソッド(配列, 数値)
-# def input_array(length)
-#   array = []
-#   count = 1
-#   length.times do
-#     array << count
-#     count += 1
-#   end
-#   return array
-# end
-
-# # 来客を配列にするメソッド
-# def customer_array(people, seat_num, max)
-#   array = []
-#   count = seat_num.to_i
-#   people.times do
-#     if count <= max
-#       array << count
-#       count += 1
-#     else
-#       count = 1
-#       array << count
-#       count += 1
-#     end
-#   end
-#   return array
-# end
-
-# # 席が余っているか確認するメソッド
-# def seat_check(store_seat, customer_seats)
-#   if store_seat.include?(customer_seats)
-#     left_store_seat = store_seat.join.delete(customer_seats.join)
-#     store_seat = left_store_seat.split()
-#     return store_seat
-#   else
-#     return store_seat
-#   end
-# end
-
-# input = gets.split(" ").map(&:to_i)
-# all_seat_count = input[0]
-
-# store_seat =
-# input[1].times do
-#   store_seat = input_array(input[0])
-#   customer = gets.split(" ").map(&:to_i)
-#   customer_seats = customer_array(customer[0], customer[1], store_seat.length)
-#   store_seat = seat_check(store_seat, customer_seats)
-# end
-
-# puts all_seat_count - store_seat.length
-# puts store_seat
-
 # ------------------------------------
 # # 【表の自動生成】
 
@@ -336,3 +270,52 @@
 # b = one_number_calc(combination2)
 
 # puts a > b ? a : b
+
+
+# ------------------------------------
+# 【長テーブルのうなぎ屋】
+
+# # お客さんを配列にするメソッド
+# def customer_sit_on(customers, customer_seat, seats, all_seats_count)
+#   seat = []
+#   n = customer_seat
+#   customers.times do
+#     if n <= all_seats_count
+#       seat << n
+#     else
+#       n = 1
+#       seat << n
+#     end
+#     n += 1
+#   end
+#   return seat
+# end
+
+# input = gets.split(' ').map(&:to_i)
+# all_seats_count = input[0]
+# seats = [*1..input[0]]
+# customer_count = input[1]
+
+# customer_count.times do
+#   data = gets.split(' ').map(&:to_i)
+#   customers = data[0]
+#   customer_seat = data[1]
+
+#   customer_seat = customer_sit_on(customers, customer_seat, seats, all_seats_count)
+
+#   # 全員が座れるか確認
+#   result = true
+#   customer_seat.each do |n|
+#     unless seats.include?(n)
+#       result = false
+#     end
+#   end
+
+#   if result
+#     seats = seats - customer_seat
+#   end
+# end
+
+# puts all_seats_count - seats.length
+
+# ------------------------------------

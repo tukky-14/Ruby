@@ -137,25 +137,57 @@
 # puts number1.to_i + number2.to_i
 
 # ------------------------------------
-def check_str(str, partial)
-  if str.include?(partial)
-    return str
-  end
-end
+# def check_str(str, partial)
+#   if str.include?(partial)
+#     return str
+#   end
+# end
 
-count = gets.to_i
-partial = gets.chomp
-strs = []
+# count = gets.to_i
+# partial = gets.chomp
+# strs = []
 
-count.times do
-  str = gets.chomp
-  if check_str(str, partial)
-    strs <<  check_str(str, partial)
-  end
-end
+# count.times do
+#   str = gets.chomp
+#   if check_str(str, partial)
+#     strs <<  check_str(str, partial)
+#   end
+# end
 
-if strs.any?
-  puts strs
-else
-  puts "None"
-end
+# if strs.any?
+#   puts strs
+# else
+#   puts "None"
+# end
+
+# ------------------------------------
+# # 【先生の宿題：不正解】
+
+# input = gets.split(' ')
+# a = input[0]
+# b = input[2]
+# c = input[4]
+# calc = input[1]
+
+# x = 0
+# if a == "x"
+#   if calc == "+"
+#     x = c.to_i - b.to_i
+#   else
+#     x = c.to_i + b.to_i
+#   end
+# elsif b == "x"
+#   if calc == "+"
+#     x = c.to_i - b.to_i
+#   else
+#     x = c.to_i + b.to_i
+#   end
+# else
+#   if calc == "+"
+#     x = a.to_i + b.to_i
+#   else
+#     x = a.to_i - b.to_i
+#   end
+# end
+
+# puts x
