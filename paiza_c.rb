@@ -194,33 +194,36 @@
 
 # ------------------------------------
 # 【ポーカー】
-count = gets.to_i
+# count = gets.to_i
 
-def poker(cards)
-  if cards.uniq.length == 1
-    return "Four Card"
-  elsif cards.uniq.length == 2
-    num =  cards[0]
-    if cards.count(num) == 1 || cards.count(num) == 3
-      return "Three Card"
-    else
-      return "Two Pair"
-    end
-  elsif cards.uniq.length == 3
-    return "One Pair"
-  end
-end
+# def poker(cards)
+#   if cards.uniq.length == 1
+#     return "Four Card"
+#   elsif cards.uniq.length == 2
+#     num =  cards[0]
+#     if cards.count(num) == 1 || cards.count(num) == 3
+#       return "Three Card"
+#     else
+#       return "Two Pair"
+#     end
+#   elsif cards.uniq.length == 3
+#     return "One Pair"
+#   end
+# end
 
-count.times do
-  input = gets.chomp.split('').map(&:to_i)
-  result = poker(input)
+# count.times do
+#   input = gets.chomp.split('').map(&:to_i)
+#   result = poker(input)
 
-  if result
-    puts result
-  else 
-    puts "No Pair"
-  end
-end
+#   if result
+#     puts result
+#   else 
+#     puts "No Pair"
+#   end
+# end
+
+
+# ------------------------------------
 
 
 
